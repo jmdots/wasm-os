@@ -4,7 +4,7 @@ all: build serve
 
 # Build the WebAssembly package
 build:
-	wasm-pack build
+	wasm-pack build --target web
 	rm -rf www/pkg
 	cp -r pkg www/
 
