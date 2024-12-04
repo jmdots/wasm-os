@@ -6,7 +6,7 @@ mod userspace;
 
 #[wasm_bindgen(start)]
 pub fn init() {
-    #[cfg(feature = "console_error_panic_hook")]
+    #[cfg(feature = "panic-hook")]
     console_error_panic_hook::set_once();
 }
 
