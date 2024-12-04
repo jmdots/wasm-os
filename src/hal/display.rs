@@ -33,16 +33,22 @@ impl Display {
 
     pub fn write_text(&self, text: &str, x: f64, y: f64) {
         self.context.set_font("16px monospace");
-        self.context.set_fill_style_with_str("white");
+        self.context.set_fill_style(&JsValue::from_str("white"));
         self.context.fill_text(text, x, y).unwrap();
     }
 
     pub fn draw_cursor(&self, x: f64, y: f64) {
-        self.context.set_fill_style_with_str("white");
+        self.context.set_fill_style(&JsValue::from_str("white"));
         self.context.fill_rect(x, y, 8.0, 2.0);
     }
 
-    pub fn get_dimensions(&self) -> (u32, u32) {
-        (self.width, self.height)
+    #[wasm_bindgen]
+    pub fn get_width(&self) -> u32 {
+        self.width
+    }
+
+    #[wasm_bindgen]
+    pub fn get_height(&self) -> u32 {
+        self.height
     }
 }
