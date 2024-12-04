@@ -1,6 +1,7 @@
 use wasm_bindgen::prelude::*;
 use crate::hal::display::Display;
 
+#[wasm_bindgen]
 pub struct Shell {
     display: Display,
     cursor_x: f64,
@@ -8,7 +9,9 @@ pub struct Shell {
     input_buffer: String,
 }
 
+#[wasm_bindgen]
 impl Shell {
+    #[wasm_bindgen(constructor)]
     pub fn new(display: Display) -> Self {
         Self {
             display,
@@ -18,6 +21,7 @@ impl Shell {
         }
     }
 
+    #[wasm_bindgen]
     pub fn handle_keypress(&mut self, key: &str) {
         match key {
             "Enter" => self.execute_command(),
@@ -55,6 +59,7 @@ impl Shell {
         self.input_buffer.clear();
     }
 
+    #[wasm_bindgen]
     pub fn render(&self) {
         self.display.clear();
         self.display.write_text("WasmOS > ", 10.0, self.cursor_y);
