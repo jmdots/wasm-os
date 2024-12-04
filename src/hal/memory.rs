@@ -1,5 +1,3 @@
-use wasm_bindgen::prelude::*;
-
 /// Hardware Abstraction Layer for memory operations
 pub struct MemoryHAL {
     heap_base: *mut u8,
