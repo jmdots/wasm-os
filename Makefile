@@ -10,7 +10,7 @@ build:
 
 # Start the development server
 serve:
-	cd www && python -m http.server 8080
+	cd www && python server.py
 
 # Clean build artifacts
 clean:
