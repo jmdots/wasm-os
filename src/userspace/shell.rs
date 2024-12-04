@@ -35,20 +35,20 @@ impl Shell {
     }
 
     fn execute_command(&mut self) {
-        let output = match self.input_buffer.trim() {
-            "help" => "Available commands: help, clear, exit",
+        let output: String = match self.input_buffer.trim() {
+            "help" => "Available commands: help, clear, exit".to_string(),
             "clear" => {
                 self.display.clear();
                 self.cursor_y = 20.0;
-                ""
+                String::new()
             },
-            "exit" => "Goodbye!",
+            "exit" => "Goodbye!".to_string(),
             cmd => format!("Unknown command: {}", cmd),
         };
 
         if !output.is_empty() {
             self.cursor_y += 20.0;
-            self.display.write_text(output, 10.0, self.cursor_y);
+            self.display.write_text(&output, 10.0, self.cursor_y);
         }
 
         self.cursor_y += 20.0;
